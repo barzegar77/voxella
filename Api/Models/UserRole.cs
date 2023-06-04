@@ -6,7 +6,7 @@ namespace Api.Models
     public class UserRole
     {
         [Key]
-        public Guid Id  { get; set; }
+        public Guid Id { get; set; }
 
         public Guid? UserId { get; set; }
         [ForeignKey(nameof(UserId))]

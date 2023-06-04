@@ -1,8 +1,4 @@
-﻿using MailKit.Net.Smtp;
-using MailKit.Security;
-using MimeKit;
-using MimeKit.Text;
-using System.Net;
+﻿using System.Net;
 using System.Net.Mail;
 
 namespace Api.Common
@@ -27,7 +23,7 @@ namespace Api.Common
             System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient();
             smtp.Host = "smtp-mail.outlook.com";
             smtp.Port = 587;
-            smtp.Credentials = new NetworkCredential("abolfazl.barzegar77@hotmail.com", "Abolfazl1377!");
+            smtp.Credentials = new NetworkCredential("abolfazl.barzegar77@hotmail.com", "");
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.EnableSsl = true;
             try

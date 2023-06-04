@@ -13,9 +13,9 @@ namespace Api.Services
         private readonly IPasswordHasher _passwordHasher;
         private readonly IEmailSender _emailSender;
 
-        public AuthenticationService(IUserRepository userRepository, 
-            ITokenService tokenService, 
-            IPasswordHasher passwordHasher, 
+        public AuthenticationService(IUserRepository userRepository,
+            ITokenService tokenService,
+            IPasswordHasher passwordHasher,
             IEmailSender emailSender)
         {
             _userRepository = userRepository;
@@ -102,7 +102,7 @@ namespace Api.Services
                     return new AuthenticationResult(true, "Email confirmation has been resent. Please check your email.");
                 }
             }
-            else if(existingUser.IsEmailConfirmed)
+            else if (existingUser.IsEmailConfirmed)
             {
                 return new AuthenticationResult(false, "Username or email already exists.");
             }
@@ -118,7 +118,7 @@ namespace Api.Services
                 IsEmailConfirmed = false,
             };
 
-         
+
 
             // Update the user entity with the verification code and sent datetime
             user.EmailConfirmationCode = verificationCode;
@@ -200,11 +200,11 @@ namespace Api.Services
         public async Task<AuthenticationResult> EmailConfirmationAsync(EmailConfirmationViewModel model)
         {
             var user = await _userRepository.GetUserByEmail(model.Email);
-            if(user == null)
+            if (user == null)
             {
                 return new AuthenticationResult(false, "Username or email already exists.");
             }
-            else if(user.IsEmailConfirmed)
+            else if (user.IsEmailConfirmed)
             {
                 return new AuthenticationResult(false, "Username or email already exists.");
             }
